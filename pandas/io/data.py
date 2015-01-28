@@ -32,7 +32,7 @@ class RemoteDataError(PandasError, IOError):
 
 
 def DataReader(name, data_source=None, start=None, end=None,
-               retry_count=3, pause=0.001):
+               retry_count=3, pause=0.001, interval='d'):
     """
     Imports data from a number of online sources.
 
@@ -74,7 +74,7 @@ def DataReader(name, data_source=None, start=None, end=None,
     if data_source == "yahoo":
         return get_data_yahoo(symbols=name, start=start, end=end,
                               adjust_price=False, chunksize=25,
-                              retry_count=retry_count, pause=pause)
+                              retry_count=retry_count, pause=pause, interval=interval)
     elif data_source == "google":
         return get_data_google(symbols=name, start=start, end=end,
                                adjust_price=False, chunksize=25,
